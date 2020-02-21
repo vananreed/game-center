@@ -1,2 +1,4 @@
-<h1>Games#index</h1>
-<p>Find me in app/views/games/index.html.erb</p>
+<h1>Welcome to Game Center, let's play!</h1>
+<% @games.each do |game| %>
+  <%= render game %>
+<% end %>
