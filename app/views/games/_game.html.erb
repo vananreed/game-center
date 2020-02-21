@@ -1,2 +1,2 @@
 <div class="game-name"><%= game.name %></div>
-<%= link_to "Play", '#' %>
+<%= link_to "Play", game_playthroughs_path(game), method: :post %>

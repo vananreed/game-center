@@ -1,4 +1,5 @@
 <h1>Welcome to Game Center, let's play!</h1>
+<h3>Total Score: <%= current_user.total_score %></h3>
 <% @games.each do |game| %>
   <%= render game %>
 <% end %>

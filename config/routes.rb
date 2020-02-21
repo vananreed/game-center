@@ -3,5 +3,7 @@ Rails.application.routes.draw do
 
   root to: "games#index"
 
-  resources :games, only: [:index]
+  resources :games, only: [:index] do
+    resources :playthroughs, only: [:create]
+  end
 end
