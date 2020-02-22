@@ -4,7 +4,6 @@ class Achievement < ApplicationRecord
   def criteria_met?(user)
     case criteria
     when 1
-      byebug
       user.last_three_games_the_same?
     when 2
       user.total_score > 5000
