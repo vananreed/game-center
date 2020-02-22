@@ -17,7 +17,10 @@ class User < ApplicationRecord
   end
 
   def last_three_games_the_same?
-    last_playthroughs(3).pluck(:game_id).uniq.length == 1
+    last_playthroughs = last_playthroughs(3)
+    return false unless last_playthroughs.length == 3
+
+    last_playthroughs.pluck(:game_id).uniq.length == 1
   end
 
   def total_different_games_played

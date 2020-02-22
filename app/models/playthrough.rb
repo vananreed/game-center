@@ -13,7 +13,8 @@ class Playthrough < ApplicationRecord
 
   def check_achievements
     Achievement.find_each do |achievement|
-      next if !achievement.criteria_met?(user) || user.users_achievements.exists?(achievement_id: achievement.id)
+      next if user.users_achievements.exists?(achievement_id: achievement.id)
+      next unless achievement.criteria_met?(user)
 
       user.users_achievements.create(achievement: achievement)
     end

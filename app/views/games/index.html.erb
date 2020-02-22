@@ -1,3 +1,7 @@
+<div style="text-align: right;">
+  <%= link_to('Logout', destroy_user_session_path, method: :delete) %>
+</div>
+
 <h1>Welcome to Game Center, let's play!</h1>
 <h3>Total Score: <%= current_user.total_score %></h3>
 <% @games.each do |game| %>
@@ -5,7 +9,12 @@
 <% end %>
 
 <h3>Achievements</h3>
-<div>Achievements: <%= @users_achievements.count %></div>
-<% @users_achievements.each do |users_achievement| %>
-  <div><%= users_achievement.achievement.name.capitalize %></div>
-<% end %>
+<div>Achievements Awarded: <%= @users_achievements.count %></div>
+
+<ul>
+  <% @users_achievements.each do |users_achievement| %>
+    <li><strong><%= users_achievement.achievement.name.capitalize %></strong></li>
+  <% end %>
+</ul>
+
+
