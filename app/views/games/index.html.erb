@@ -3,3 +3,9 @@
 <% @games.each do |game| %>
   <%= render game %>
 <% end %>
+
+<h3>Achievements</h3>
+<div>Achievements: <%= @users_achievements.count %></div>
+<% @users_achievements.each do |users_achievement| %>
+  <div><%= users_achievement.achievement.name.capitalize %></div>
+<% end %>

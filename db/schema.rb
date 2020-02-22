@@ -10,10 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_21_022515) do
+ActiveRecord::Schema.define(version: 2020_02_22_025410) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "achievements", force: :cascade do |t|
+    t.string "name", null: false
+    t.integer "criteria", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "games", force: :cascade do |t|
     t.string "name"
@@ -42,6 +49,15 @@ ActiveRecord::Schema.define(version: 2020_02_21_022515) do
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
+  create_table "users_achievements", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "achievement_id", null: false
+    t.index ["achievement_id"], name: "index_users_achievements_on_achievement_id"
+    t.index ["user_id"], name: "index_users_achievements_on_user_id"
+  end
+
   add_foreign_key "playthroughs", "games"
   add_foreign_key "playthroughs", "users"
+  add_foreign_key "users_achievements", "achievements"
+  add_foreign_key "users_achievements", "users"
 end
